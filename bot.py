@@ -18,17 +18,17 @@ def fetch(url):
 def get_json(url):
     return json.loads(fetch(url).decode())
 
-def send(text):
-    if not TOKEN or not CHANNEL:
-        raise RuntimeError("Missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHANNEL_ID secret")
-    from urllib.parse import urlencode
-    data = urlencode({"chat_id": CHANNEL, "text": text, "parse_mode": "HTML",
-                      "disable_web_page_preview": "true"}).encode()
-    req = Request(f"https://api.telegram.org/bot{TOKEN}/sendMessage", data=data)
-    result = json.loads(urlopen(req, timeout=20).read().decode())
-    if not result.get("ok"):
-        raise RuntimeError(f"Telegram API error: {result}")
-    return result
+
+    referral = (
+        "\n\n🔗 <b>ابدأ رحلتك مع العملات الرقمية</b>\n"
+        'التسجيل عبر Bybit: '
+        '<a href="https://partner.bybit.com/b/153832">'
+        "اضغط هنا للتسجيل</a>\n"
+        "⚠️ التداول ينطوي على مخاطر، ولا توجد أرباح مضمونة."
+    )
+    if "partner.bybit.com/b/153832" not in text:
+        text += referral
+
 
 
 def klines(symbol):

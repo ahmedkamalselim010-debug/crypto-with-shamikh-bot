@@ -6,7 +6,7 @@ import xml.etree.ElementTree as ET
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
 CHANNEL = os.getenv("TELEGRAM_CHANNEL_ID", "").strip()
 STATE = "state.json"
-API = "https://api.binance.com"
+KRAKEN_API = "https://api.kraken.com/0/public/OHLC"
 RSS = "https://www.coindesk.com/arc/outboundfeeds/rss/"
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 
@@ -30,9 +30,43 @@ def send(text):
         raise RuntimeError(f"Telegram API error: {result}")
     return result
 
+
 def klines(symbol):
-    url = API + "/api/v3/klines?" + urlencode({"symbol": symbol, "interval": "1h", "limit": 120})
-    return get_json(url)
+    pairs = {
+        "BTCUSDT": "XBTUSD",
+        "ETHUSDT": "ETHUSD",
+    }
+
+    if symbol not in pairs:
+        raise ValueError(f"Unsupported symbol: {symbol}")
+
+    params = urlencode({
+        "pair": pairs[symbol],
+        "interval": 60,
+    })
+
+    data = get_json(f"{KRAKEN_API}?{params}")
+
+    if data.get("error"):
+        raise RuntimeError(f"Kraken API error: {data['error']}")
+
+    result = data.get("result", {})
+    pair_key = next(
+        (key for key in result if key != "last"),
+        None
+    )
+
+    if not pair_key:
+        raise RuntimeError(f"No candle data returned for {symbol}")
+
+    candles = result[pair_key]
+
+    # Normalize Kraken candles: close price must remain at index 4.
+    return [
+        [c[0], c[1], c[2], c[3], c[4]]
+        for c in candles
+    ]
+
 
 def ema(values, period):
     alpha = 2 / (period + 1)

@@ -18,16 +18,50 @@ def fetch(url):
 def get_json(url):
     return json.loads(fetch(url).decode())
 
+def get_json(url):
+    return json.loads(fetch(url).decode())
+
+
+def send(text):
+    if not TOKEN or not CHANNEL:
+        raise RuntimeError(
+            "Missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHANNEL_ID"
+        )
 
     referral = (
-        "\n\n🔗 <b>ابدأ رحلتك مع العملات الرقمية</b>\n"
-        'التسجيل عبر Bybit: '
+        "\n\n🔗 <b>ابدأ رحلتك في عالم الكريبتو</b>\n"
+        "سجّل عبر Bybit من الرابط التالي:\n"
         '<a href="https://partner.bybit.com/b/153832">'
-        "اضغط هنا للتسجيل</a>\n"
+        "رابط التسجيل</a>\n"
         "⚠️ التداول ينطوي على مخاطر، ولا توجد أرباح مضمونة."
     )
+
     if "partner.bybit.com/b/153832" not in text:
         text += referral
+
+    payload = urlencode({
+        "chat_id": CHANNEL,
+        "text": text,
+        "parse_mode": "HTML",
+        "disable_web_page_preview": "true",
+    }).encode()
+
+    req = Request(
+        f"https://api.telegram.org/bot{TOKEN}/sendMessage",
+        data=payload,
+        headers={
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+    )
+
+    with urlopen(req, timeout=20) as response:
+        result = json.loads(response.read().decode())
+
+    if not result.get("ok"):
+        raise RuntimeError(f"Telegram send failed: {result}")
+
+
+ 
 
 
 

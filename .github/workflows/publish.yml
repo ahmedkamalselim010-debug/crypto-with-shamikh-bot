@@ -1,10 +1,11 @@
 
+
 name: Crypto with Shamikh scheduled posts
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "17 */6 * * *"
+    - cron: "0 0,6,12,18 * * *"
 
 permissions:
   contents: write

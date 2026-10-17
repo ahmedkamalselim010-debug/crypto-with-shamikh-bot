@@ -152,8 +152,10 @@ def market_message(rows):
             f"EMA20: <code>{pricefmt(e20)}</code> | EMA50: <code>{pricefmt(e50)}</code>",
             f"القراءة الفنية: <b>{html.escape(signal)}</b>",
             html.escape(why), ""])
-    lines.extend(["⏱️ الإطار الزمني: ساعة واحدة. المصدر: بيانات السوق العامة من Binance.",
+   
+    lines.extend(["⏱️ الإطار الزمني: ساعة واحدة. المصدر: بيانات السوق العامة من Kraken.",
         "⚠️ تحليل آلي مبسط للتثقيف، وليس نصيحة مالية أو ضمانًا للربح. قد تكون الإشارات خاطئة."])
+
     return "\n".join(lines)
 
 def read_state():

@@ -1,8 +1,5 @@
 {
   "news_seen": [
-    "https://www.coindesk.com/business/2026/11/02/standard-chartered-debuts-tokenized-deposits-in-hong-kong-for-corporate-clients",
-    "https://www.coindesk.com/opinion/2026/11/02/big-crypto-wants-the-one-thing-it-can-t-buy-your-vote",
-    "https://www.coindesk.com/markets/2026/11/02/bitcoin-traders-eye-post-election-rally-as-exchange-outflows-point-to-supply-squeeze",
     "https://www.coindesk.com/tech/2026/11/02/eu-entity-suspected-of-losing-usd106-million-from-crypto-exchange-accounts-zachxbt-says",
     "https://www.coindesk.com/business/2026/11/03/what-happens-if-north-korea-steals-wall-street-s-tokenized-assets-next",
     "https://www.coindesk.com/policy/2026/11/03/cftc-gets-into-legal-clash-over-stock-perps-after-having-cleared-path-for-crypto-version",
@@ -99,9 +96,12 @@
     "https://www.coindesk.com/policy/2026/11/16/u-s-senate-democrats-tell-cftc-to-back-off-its-demand-prediction-markets-defy-bans",
     "https://www.coindesk.com/markets/2026/11/17/bitcoin-could-slide-into-the-usd50-000s-as-fed-rate-hike-bets-build-wintermute-says",
     "https://www.coindesk.com/tech/2026/11/17/cardano-foundation-seeks-usd5-million-from-treasury-using-ada-price-33-above-market",
-    "https://www.coindesk.com/markets/2026/11/17/wells-fargo-s-reported-blackrock-bitcoin-etf-holdings-double-to-usd2-35-billion"
+    "https://www.coindesk.com/markets/2026/11/17/wells-fargo-s-reported-blackrock-bitcoin-etf-holdings-double-to-usd2-35-billion",
+    "https://www.coindesk.com/markets/2026/11/17/coinbase-ceo-says-ai-agents-will-account-for-99-9-of-transactions-within-a-decade",
+    "https://www.coindesk.com/policy/2026/11/17/predictions-platform-kalshi-complies-with-order-to-halt-trump-mention-contracts",
+    "https://www.coindesk.com/business/2026/11/17/druckenmiller-says-he-is-short-copper-warns-of-economic-weakness-in-2027"
   ],
   "initialized": true,
   "market_last_signature": "BTCUSDT:ميل هابط، دون تقاطع جديد|ETHUSDT:ميل هابط، دون تقاطع جديد",
-  "market_last_sent_at": "2026-11-17T07:42:38.531697+00:00"
+  "market_last_sent_at": "2026-11-17T20:46:05.304731+00:00"
 }
